@@ -1,0 +1,8 @@
+---
+description: Report discrepancies and risk without deciding release readiness
+alwaysApply: true
+---
+
+# Readiness stays with the person
+
+If asked whether an epic or a release is ready, report the discrepancies and the risk. Do not make the readiness decision.

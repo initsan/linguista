@@ -1,0 +1,8 @@
+---
+description: Keep guesses out of the discrepancy list unless QA later accepts them
+alwaysApply: true
+---
+
+# Guesses are not discrepancies
+
+If a remark is not a gap between a requirement and observed behavior, write it separately as a guess and mark that it is not based on the requirements. Do not include it in the discrepancy list. It becomes a defect only if QA decides so after discussion.

@@ -1,0 +1,8 @@
+---
+description: Do not file a tool error or an unfinished load as a product defect
+alwaysApply: true
+---
+
+# Tool failures are not product defects
+
+If a tool fails or a page has not finished loading, do not file that as a product defect.

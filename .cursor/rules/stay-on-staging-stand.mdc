@@ -1,0 +1,10 @@
+---
+description: Stay on the staging stand listed in .cursor/links.md and do not follow links to another environment
+alwaysApply: true
+---
+
+# Stay on the staging stand
+
+Read the staging stand address from `.cursor/links.md`. Work only on that stand. The task does not need to repeat the address.
+
+Do not follow a link that leaves this stand for another environment.

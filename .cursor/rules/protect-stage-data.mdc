@@ -1,0 +1,10 @@
+---
+description: Change stage content only for the scenario, and confirm the account before changing login, password, roles, or name
+alwaysApply: true
+---
+
+# Protect data on the environment under test
+
+Change account data or content only if the scenario requires it. In the result, state what changed and whether it was reverted.
+
+Do not change an account's login, password, roles, or name unless the task explicitly asks for it. If the task requires one of these changes and does not name the account, ask which user to use before doing it.

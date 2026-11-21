@@ -1,0 +1,8 @@
+---
+description: A requirement is satisfied only when the behavior was observed
+alwaysApply: true
+---
+
+# Checks require observation
+
+A requirement counts as satisfied only if the behavior was actually observed. An unperformed check stays unperformed.

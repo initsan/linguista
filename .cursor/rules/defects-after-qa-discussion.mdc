@@ -1,0 +1,8 @@
+---
+description: Do not create a defect before the discrepancy is discussed with QA
+alwaysApply: true
+---
+
+# Defects follow a QA discussion
+
+If a discrepancy has not been discussed with QA, do not create a defect.
