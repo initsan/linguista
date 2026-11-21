@@ -1,37 +1,37 @@
 # Epic 8, portion 44
 
-One finished staging check, copied from the run. The portion is a short moderation pass: an author submits a word, a moderator acts on it, and a reader sees the result. Requirements and the report stay in Russian, the language of the check. Screenshots are omitted.
+One finished staging check, copied from the run. The portion is a short moderation pass: an author submits a word, a moderator acts on it, and a reader sees the result. The report is in English. Product labels, word names, and quoted interface text stay in the original language. Screenshots are omitted.
 
-Пункты 12 и 13 пропущены. Пункт 14 проверен, таблица по всему списку ниже.
+Items 12 and 13 were skipped. Item 14 was checked. The table below covers the whole list.
 
-Учётная запись без роли автора отправила прямое `POST /api/v1/words/{id}/publication/submit` для своего слова **koira**. Ответ **409**, код `publication_policy_required`: «Accept the current publication policy and platform rules». Статус слова остался личным, заявка не создана.
+An account without the author role sent a direct `POST /api/v1/words/{id}/publication/submit` for its word **koira**. The response was **409**, code `publication_policy_required`: «Accept the current publication policy and platform rules». The word stayed personal, and no request was created.
 
-| Пункт | Требование | Наблюдение | Статус | Риск |
+| Item | Requirement | Observation | Status | Risk |
 |---|---|---|---|---|
-| 2 | Отправить слово с переводом: «На проверке», в очереди появилась заявка, читатель видит «не найдено». | Слово qaep8sill на дашборде автора «На проверке», заявка была в очереди. У читателя коллекции «Ничего не найдено», слова «Слова не найдены». | выполнено | |
-| 3 | Модератор берёт заявку, отмечает 18+ «нет», одобряет: слово «Опубликовано», автор получил уведомление, слово в ленте и поиске. | Одна заявка одобрена, отметка 18+ «нет», из очереди удалена. Бейдж «Опубликовано», уведомление «Публикация слова «qaep8sill» одобрена». Слово есть в поиске гостя и первым в «Новинках». | выполнено | |
-| 4 | Автор снимает слово, затем «Показать снова» без изменений: сразу «Опубликовано», новой заявки нет. | После снятия бейдж «Снято вручную». Кнопки «Показать снова» нет. Диалог «Отправить на публикацию?» сообщает, что материал проверит модератор. После подтверждения сразу «Опубликовано», новой заявки в очереди не было. | расхождение | Автор ждёт проверку, а слово публикуется сразу |
-| 5 | Автор снимает слово, меняет перевод, отправляет: новая заявка; модератор отклоняет с причиной; автор видит причину и «Подать апелляцию». | Перевод изменён на «проверка стенда два», статус «На проверке». Отклонение с причиной «неприемлимый контент». В окне «Материал отклонён» эта причина и кнопка «Подать апелляцию». | выполнено | |
-| 6 | Апелляция: подана, второй модератор разбирает, исход приходит уведомлением. | Текст апелляции «проверка апелляции стенда». Второй модератор поставил upheld. Пришло уведомление с исходом, статус «Отклонено». | выполнено | |
-| 7 | Значимая правка опубликованного слова: подтверждение, слово «Снято». | У опубликованного hyvä перевод изменён с «хороший» на «хороший стенд». Диалога подтверждения не было. Бейдж «Снято вручную». | расхождение | Правка снимает слово без подтверждения, статус другой |
-| 8 | Коллекция из 3 опубликованных слов: отправка, одобрение, «Ждёт публикации слов»; одобрить четвёртое слово: коллекция публикуется сама. | qaep8coll после одобрения показала «Ожидает публикации слов: 3/4». После одобрения четвёртого слова hyvä коллекция стала «Опубликовано», уведомление «Одобрено 2 материала: hyvä, qaep8coll». | расхождение | На пороге автор видит другую подпись статуса |
-| 9 | Массовая отправка 5 материалов: результат с числами. | Через «Несколько слов» созданы qaep8m1–qaep8m5. Сообщение «В библиотеку добавлено 5 слов». На дашборде у всех пяти «На проверке». | выполнено | |
-| 10 | Читатель жалуется на слово: обращение у модератора; закрыть как no_action. | Читатель пожаловался на hyvä, причина «Другое», комментарий «проверка жалобы стенда». Текст «Жалоба отправлена модераторам». Обращение закрыто как no_action, слово осталось в поиске. | выполнено | |
-| 11 | Слово с блокирующей находкой (18+ из тестового набора): предложение reject, в режиме A всё равно в очереди. | Пропущено: слова из тестового списка нет. | не проверено | |
-| 12 | Тест-картинка из тестового hash-реестра (при включённом hash-флаге): находка, нейтральная причина автору. | Пропущено: тестовой картинки нет. | не проверено | |
-| 13 | Модератор-автор не видит собственный материал в очереди. | Пропущено: нет такой учётной записи, портал модерации недоступен. | не проверено | |
-| 14 | Пользователь без роли автора не может отправить (прямой запрос отклонен). | Слово koira. Прямой запрос отправки отклонён: 409, publication_policy_required. Заявка не создана, статус personal. | выполнено | |
+| 2 | Submit a word with a translation: «На проверке», a request appears in the queue, and the reader sees «не найдено». | Word qaep8sill is «На проверке» on the author's dashboard, and the request was in the queue. For the reader, collections show «Ничего не найдено» and words show «Слова не найдены». | met | |
+| 3 | The moderator takes the request, sets 18+ to «нет», and approves: the word is «Опубликовано», the author gets a notification, and the word is in the feed and in search. | One request was approved, 18+ was «нет», and it left the queue. Badge «Опубликовано», notification «Публикация слова «qaep8sill» одобрена». The word is in guest search and first in «Новинках». | met | |
+| 4 | The author unpublishes the word, then uses «Показать снова» with no edits: it is immediately «Опубликовано», and there is no new request. | After unpublishing, the badge is «Снято вручную». There is no «Показать снова» button. The dialog «Отправить на публикацию?» says a moderator will review the material. After confirmation it is immediately «Опубликовано», and there was no new request in the queue. | discrepancy | The author is told to expect a review, but the word is published immediately |
+| 5 | The author unpublishes the word, changes the translation, and submits: a new request; the moderator rejects it with a reason; the author sees the reason and «Подать апелляцию». | The translation was changed to «проверка стенда два», status «На проверке». Rejection reason «неприемлимый контент». The window «Материал отклонён» shows that reason and the button «Подать апелляцию». | met | |
+| 6 | Appeal: it is submitted, a second moderator reviews it, and the outcome arrives as a notification. | Appeal text «проверка апелляции стенда». The second moderator set upheld. A notification arrived with the outcome, status «Отклонено». | met | |
+| 7 | A significant edit of a published word: a confirmation, and the word is «Снято». | The published word hyvä had its translation changed from «хороший» to «хороший стенд». There was no confirmation dialog. Badge «Снято вручную». | discrepancy | The edit unpublishes the word without confirmation, and the status is different |
+| 8 | A collection of 3 published words: submit, approve, «Ждёт публикации слов»; approve the fourth word and the collection publishes itself. | After approval, qaep8coll showed «Ожидает публикации слов: 3/4». After the fourth word hyvä was approved, the collection became «Опубликовано». Notification «Одобрено 2 материала: hyvä, qaep8coll». | discrepancy | At the threshold the author sees a different status label |
+| 9 | A bulk submit of 5 materials shows a result with counts. | qaep8m1–qaep8m5 were created through «Несколько слов». Message «В библиотеку добавлено 5 слов». All five are «На проверке» on the dashboard. | met | |
+| 10 | A reader reports a word: the report reaches the moderator, then it is closed as no_action. | The reader reported hyvä, reason «Другое», comment «проверка жалобы стенда». Text «Жалоба отправлена модераторам». The report was closed as no_action, and the word stayed in search. | met | |
+| 11 | A word with a blocking finding (18+ from the test set): a reject suggestion, and in mode A it is still in the queue. | Skipped: the word from the test list is not available. | not checked | |
+| 12 | A test image from the test hash registry, with the hash flag on: a finding, and a neutral reason for the author. | Skipped: the test image is not available. | not checked | |
+| 13 | A moderator who is also the author does not see their own material in the queue. | Skipped: there is no such account, and the moderation portal is unavailable. | not checked | |
+| 14 | A user without the author role cannot submit. A direct request is rejected. | Word koira. The direct submit request was rejected: 409, publication_policy_required. No request was created, status personal. | met | |
 
-| Изменение | Откатили |
+| Change | Reverted |
 |---|---|
-| Слово qaep8sill: создано, опубликовано, перевод «проверка стенда два», отклонено, апелляция upheld | нет |
-| У слова hyvä перевод изменён на «хороший стенд», слово снова опубликовано | нет |
-| Коллекция qaep8coll создана и опубликована | нет |
-| Слова qaep8m1–qaep8m5 созданы, статус «На проверке» | нет |
-| Жалоба на hyvä, закрыта как no_action | нет |
+| Word qaep8sill: created, published, translation «проверка стенда два», rejected, appeal upheld | no |
+| Word hyvä: translation changed to «хороший стенд», then published again | no |
+| Collection qaep8coll created and published | no |
+| Words qaep8m1–qaep8m5 created, status «На проверке» | no |
+| Report on hyvä, closed as no_action | no |
 
-Догадки
+Guesses
 
-- В уведомлениях и кнопке отправки апелляции написано «Аппеляция» с двумя «п». На кнопке «Подать апелляцию» написание обычное. К строкам проверки это не привязано.
-- В диалоге отправки коллекции на экране сырые ключи collections.publication.*. К строке пункта 8 это не привязано.
-- Учётная запись без роли автора на странице библиотеки видит блок «Опубликовать слова?». Прямой запрос при этом отклонён. К строке пункта 14 требование про скрытую кнопку не входит.
+- Notifications and the appeal-submit button say «Аппеляция», with a double «п». The button «Подать апелляцию» uses the ordinary spelling. This is not tied to a check row.
+- The collection submit dialog shows the raw keys `collections.publication.*`. This is not tied to item 8.
+- An account without the author role sees the block «Опубликовать слова?» on the library page. The direct request is still rejected. Item 14 does not require that button to be hidden.

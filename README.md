@@ -45,7 +45,7 @@ Every file in [`.cursor/rules/`](.cursor/rules) is always on. Together they keep
 
 ## Example
 
-[Epic 8, portion 44](examples/epic-8-portion-44.md) is one finished moderation check: the requirement wording, what was observed, and the guesses. Screenshots are not in the file.
+[Epic 8, portion 44](examples/epic-8-portion-44.md) is one finished moderation check, written in English. Product labels and quoted interface text stay in the original language. Screenshots are not in the file.
 
 ## What stays off the public tree
 
