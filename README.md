@@ -7,7 +7,7 @@ The agent compares observed behavior with the requirements, reports discrepancie
 ## How a check runs
 
 1. QA pastes one portion of an epic into the chat. The requirements stay in their original language.
-2. The epic-check skill runs that portion on the staging stand, appends each finished row to a local check file, and answers with a results table. If the pass reaches «Опубликовать», «Отправить на публикацию», or «Отправить на проверку», it stops and sends QA a short note instead of the table.
+2. The epic-check skill runs that portion on the staging stand, appends each finished row to a local check file, and answers with a results table. The author's actions «Опубликовать», «Отправить на публикацию», and «Отправить на проверку» are part of the check. If the pass reaches a step in the moderation portal, it stops and sends QA a short note instead of the table.
 3. QA and the agent discuss each discrepancy. A guess is labeled as a guess and stays out of the discrepancy list.
 4. The file-defect skill writes a row only for an item QA has accepted.
 
@@ -40,7 +40,7 @@ Every file in [`.cursor/rules/`](.cursor/rules) is always on. Together they keep
 - A remark that the requirements do not cover is reported as a guess.
 - A defect is created only after QA discusses the item and accepts it.
 - Account login, password, roles, and name change only when the task asks, and only on the account the task names.
-- The agent does not use the moderation portal. Before «Опубликовать», «Отправить на публикацию», or «Отправить на проверку», it stops and asks QA to perform that action.
+- The agent does not use the moderation portal. It stops before a step there and asks QA to perform it. The author's send actions stay part of the check.
 - Secrets stay out of the repository.
 
 ## Example

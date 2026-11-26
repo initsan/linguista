@@ -1,12 +1,14 @@
 ---
-description: Stop before an action that sends content for review and ask QA to perform it
+description: Stop before a step in the moderation portal and ask QA to perform it
 alwaysApply: true
 ---
 
 # Moderation steps go to QA
 
-The agent has no access to the moderation portal. Before an action that sends content for review, stop and ask QA to perform that action. Those actions are «Опубликовать», «Отправить на публикацию», and «Отправить на проверку». Do not press them. The agent cannot roll back that submission. Those parts stay unperformed until QA has done them.
+The agent has no access to the moderation portal. Do not open it and do not act as a moderator. Stop before a step in that portal and ask QA to perform it. That step stays unperformed until QA has done it.
 
-If it is unclear whether the next action is one of these three, do not press it and ask QA. Do not invent the steps.
+The author's actions «Опубликовать», «Отправить на публикацию», and «Отправить на проверку» are not the moderation portal. Perform them when the check includes them.
+
+If it is unclear whether the next step is in the moderation portal, do not take it and ask QA. Do not invent the steps.
 
 Continue the scenario from what QA reports and from behavior that is visible on the environment under test.
