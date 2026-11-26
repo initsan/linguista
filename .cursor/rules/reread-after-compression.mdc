@@ -1,0 +1,8 @@
+---
+description: After context compression, re-read the pass skill and its check file before the next action
+alwaysApply: true
+---
+
+# Re-read the pass after compression
+
+If the context of a pass was compressed, re-read that pass's skill and its check file before the next action. Read the check file path from `.cursor/links.md`.

@@ -9,7 +9,7 @@ description: >-
 
 # Epic check
 
-Check only the portion QA sent in this message. Reply in Russian with the results table, then stop. Do not start the next story or the next section.
+Check only the portion QA sent in this message. When the pass finishes, reply in Russian with the results table, then stop. Do not start the next story or the next section. If the pass stops before «Опубликовать», «Отправить на публикацию», or «Отправить на проверку», send the short note from the procedure instead of the results table.
 
 ## Stand
 
@@ -36,16 +36,20 @@ If the message has neither heading, ask QA which list to check. Do not turn rule
 
 1. List the numbered items under the heading QA sent. One pass covers that whole list.
 2. If an item needs an account or data that is not available, ask QA before acting.
-3. If an item depends on moderation of a word, a collection, or a user, stop the pass. The agent has no access to the moderation portal. Send QA the steps to perform there for this item, and do not invent their outcome. Do not continue with later items and do not send the results table. Wait until QA confirms that those steps are done. Then continue from that confirmation and from what is visible on the stand.
-4. Open the stand and perform each item by watching the product.
-5. Mark an item done only when that behavior was seen. An item that was not performed stays `не проверено`, with the reason in `Причина`. A tool failure or a page that has not finished loading is `не проверено`, not a product discrepancy.
-6. Change account content only when the item requires it. Do not change login, password, roles, or name unless the task explicitly says so. If it does and names no account, ask which user to use.
-7. Save screenshots using the local screenshots path in `.cursor/links.md`. Do not commit that folder.
-8. Reply in Russian with the tables below. Do not create a defect. Do not decide whether the epic or the release is ready.
+3. Open the stand and perform each item by watching the product. Perform an item up to, but not including, an action that sends content for review. Those actions are «Опубликовать», «Отправить на публикацию», and «Отправить на проверку». Before any of them, stop the pass. Do not press it. Do not continue that item, do not continue with later items, and do not send the results table. The agent has no access to the moderation portal. Send QA a short note: stopped at item N, the completed items taken from the check file, and the steps for QA to perform. Send those steps only when the action is one of the three. If it is unclear whether the next action is one of the three, do not press it and ask QA. Do not invent the steps or the outcome. Rows already written to the check file stay there. Wait until QA confirms that those steps are done. Then continue from that confirmation and from what is visible on the stand.
+4. Mark an item done only when that behavior was seen. An item that was not performed stays `не проверено`, with the reason in `Причина`. A tool failure or a page that has not finished loading is `не проверено`, not a product discrepancy.
+5. Change account content only when the item requires it. Do not change login, password, roles, or name unless the task explicitly says so. If it does and names no account, ask which user to use.
+6. Save screenshots using the local screenshots path in `.cursor/links.md`. Do not commit that folder.
+7. After an item has an observation and a status, and before the next item, append one row to the check file at the path in `.cursor/links.md`. The file is a markdown table for this pass only. If that file already exists at the start of the pass, ask QA before writing. Do not append this pass onto an earlier pass and do not delete the existing file. Create the file with the header when writing the first row. After that, only append a row. Do not rewrite the file. The columns are `Пункт`, `Требование`, `Наблюдение`, `Статус`, `Причина`, `Риск`, `Скриншот`. Do not write an item that has no observation and no status. Do not commit the file.
+8. Reply in Russian with the tables below. Build the results table from the check file, not from memory. Do not create a defect. Do not decide whether the epic or the release is ready.
+
+## After context compression
+
+If the context of this chat was compressed, re-read this `SKILL.md` and the check file at the path in `.cursor/links.md` before the next action. Continue from the rows already in the file.
 
 ## Results table
 
-One row per numbered item. `Требование` is the check line copied as written, without translation or paraphrase.
+One row per numbered item. Build this table from the check file for this pass. `Требование` is the check line copied as written, without translation or paraphrase.
 
 | Пункт | Требование | Наблюдение | Статус | Причина | Риск | Скриншот |
 |---|---|---|---|---|---|---|
@@ -75,6 +79,11 @@ When a remark is not a gap between a requirement and observed behavior, list it 
 
 ## Before sending
 
+Open this skill again and walk this list item by item before sending.
+
+- Every item that has an observation and a status is one row in the check file, appended before the next item started. If a finished item is missing, append it before sending. Do not rewrite the file.
+- The results table in the reply matches the check file, row for row. If it does not, rebuild the table from the file.
+- An item with no observation and no status is not in the check file.
 - Every numbered item of the sent list has one row.
 - Context text has no row.
 - Each `Требование` matches the source wording.
@@ -87,4 +96,4 @@ When a remark is not a gap between a requirement and observed behavior, list it 
 - Login, password, roles, and the account name were not changed unless the task explicitly asked for that. If one of them changed, record it in the changes table. When a reverse action still exists, revert it, look at the stand again, and write `да` only after the previous state is visible. Otherwise write `нет`.
 - Nothing needed to continue was unclear. If an action, a requirement, or anything else needed to continue is unclear, ask. Do not invent the missing meaning. Leave the affected item `не проверено` and write the reason in `Причина`.
 - Every `не проверено` row has a reason in `Причина`. If it does not, write the reason before sending.
-- A check that needs moderation was stopped. QA received the moderation steps and confirmed they were done before the pass continued. If that confirmation is missing, do not continue and do not mark the item `выполнено`.
+- A pass that reached «Опубликовать», «Отправить на публикацию», or «Отправить на проверку» stopped before that action. QA received the note for that item, the completed items from the check file, and, when the action was one of the three, the steps to perform. If it was unclear whether the next action was one of the three, the action was not pressed and QA was asked. If QA has not confirmed, do not continue and do not mark the item `выполнено`. Rows already in the check file are still there.

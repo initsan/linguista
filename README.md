@@ -7,7 +7,7 @@ The agent compares observed behavior with the requirements, reports discrepancie
 ## How a check runs
 
 1. QA pastes one portion of an epic into the chat. The requirements stay in their original language.
-2. The epic-check skill runs that portion on the staging stand and answers with a results table.
+2. The epic-check skill runs that portion on the staging stand, appends each finished row to a local check file, and answers with a results table. If the pass reaches «Опубликовать», «Отправить на публикацию», or «Отправить на проверку», it stops and sends QA a short note instead of the table.
 3. QA and the agent discuss each discrepancy. A guess is labeled as a guess and stays out of the discrepancy list.
 4. The file-defect skill writes a row only for an item QA has accepted.
 
@@ -27,7 +27,7 @@ The setup follows a prompt stack. Stable layers live in files. The chat message 
 
 | Skill | When it runs | What it produces |
 |---|---|---|
-| [`epic-check`](.cursor/skills/epic-check/SKILL.md) | QA sends a portion to check | A Russian table with one row per check: `выполнено`, `расхождение`, or `не проверено`. Risk is filled only for a discrepancy. Guesses are a separate list |
+| [`epic-check`](.cursor/skills/epic-check/SKILL.md) | QA sends a portion to check | A Russian table with one row per check: `выполнено`, `расхождение`, or `не проверено`. Risk is filled only for a discrepancy, and `не проверено` includes a reason. Guesses are a separate list. The check file stays local |
 | [`file-defect`](.cursor/skills/file-defect/SKILL.md) | QA accepts a discrepancy or a guess | One new tracker row in the wording of the discussion, plus screenshots |
 
 ## Rules
@@ -40,7 +40,7 @@ Every file in [`.cursor/rules/`](.cursor/rules) is always on. Together they keep
 - A remark that the requirements do not cover is reported as a guess.
 - A defect is created only after QA discusses the item and accepts it.
 - Account login, password, roles, and name change only when the task asks, and only on the account the task names.
-- Moderation steps are left to QA until the agent has access to that portal.
+- The agent does not use the moderation portal. Before «Опубликовать», «Отправить на публикацию», or «Отправить на проверку», it stops and asks QA to perform that action.
 - Secrets stay out of the repository.
 
 ## Example
