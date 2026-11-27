@@ -69,7 +69,9 @@ Leave the local files in the screenshots path from `.cursor/links.md`. Do this o
 
 In the Google Drive screenshots folder from `.cursor/links.md`, create a folder named `Баг-трекер - №<this row's number>`. Put every screenshot of this defect there. Name each file briefly by its content.
 
-For each file, open its Share dialog and set General access to anyone with the link, as a viewer. Copy the share link. Insert the links into `Скриншот / видео` of the new row as file chips by following [file-chips.md](file-chips.md). In that file, `C4` means this cell.
+The browser tools cannot open the file picker. Do not write a server script under Temp. For each file, run [serve-screenshot.ps1](serve-screenshot.ps1) with that file's path. It listens once on `http://127.0.0.1:8765/` and returns the file. From the Drive page signed in as Инна Курьянова, read those bytes and upload them into the new folder. Do not copy a session cookie, token, or API key into this skill, the repository, or the defect row. If Auto-review asks before the script runs, that approval stays with the person.
+
+For each file, open its Share dialog and set General access to anyone with the link, as a viewer. If the upload leaves the role as editor and the role cannot be lowered, leave the editor role and say so. Anyone with the link must still be able to open the file. Copy the share link. Insert the links into `Скриншот / видео` of the new row as file chips by following [file-chips.md](file-chips.md). In that file, `C4` means this cell.
 
 ## 4. Row color
 
