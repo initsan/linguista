@@ -49,15 +49,19 @@ Read the defects spreadsheet from `.cursor/links.md`. Take the next integer afte
 | Project | The staging stand address from `.cursor/links.md` |
 | Status | `Новый` |
 | Author | Инна |
-| Environment | The browser and its version used to open the stand for this check |
+| Environment | The browser and its version used to open the stand for this check, then the Cursor version of this session, in the form `Chrome 150.0.7871.250 (Cursor 3.30.14)`. Use the versions actually used. Do not copy this example or another row |
 | Precondition | Предусловие from the discussion |
-| Steps to Reproduce | Шаги from the discussion |
+| Steps to Reproduce | Шаги from the discussion, one step on each line inside the cell |
 | Expected Result | Ожидаемый результат from the discussion |
 | Actual Result | Фактический результат from the discussion |
 | Комментарий | Only the text the discussion added. Otherwise leave empty |
 | Скриншот / видео | The file links from section 3 |
 
 Leave Version, severity, priority, and assignee empty.
+
+Write `Steps to Reproduce` with a line break between steps. Close the cell editor first. Paste the steps as one quoted value: the whole text wrapped in double quotes, with a newline between steps. An unquoted paste splits the steps into the rows below. A single paragraph, `insertText`, and Alt+Enter do not keep the line breaks.
+
+If the browser version or the Cursor version cannot be read, ask QA. Do not invent either version.
 
 ## 3. Screenshots
 
@@ -71,6 +75,19 @@ For each file, open its Share dialog and set General access to anyone with the l
 
 After the new row is filled, select that whole row and set its fill color. Open the fill-color menu. Skip the gray row and the row directly under it. Use the next row, the one that starts one row below the grays. Pick one of its swatches at random. Look at the defect row above and do not use its fill color. Do not change the color of any other row.
 
+## 5. After the row is filled
+
+After the new row is filled, including the chips and the fill color, read that row back cell by cell. Check the content and the format:
+
+- Each filled cell matches the agreed text. Status is `Новый`. Author is `Инна`.
+- `Steps to Reproduce` shows each step on its own line. A single wrapped paragraph is not done.
+- `Environment` is the browser and version used for this check, then the Cursor version in parentheses.
+- `Скриншот / видео` contains the file chips. The formula bar shows file names separated by spaces, not raw URLs.
+- The fill color is one swatch from the row that starts one row below the grays, and it is not the fill color of the defect row above.
+- The rows above and below are unchanged. A paste has not spilled values into the rows below.
+
+If a check fails, fix that cell. Do not write a second row for the same defect. If a paste spilled into the rows below, clear those cells.
+
 ## Before writing
 
 - The defects spreadsheet and the Drive screenshots folder are open under the account Инна Курьянова.
@@ -80,7 +97,7 @@ After the new row is filled, select that whole row and set its fill color. Open 
 - Status is `Новый` and Author is `Инна`. If either differs, set it to that value.
 - The prose in the row is Russian.
 - Комментарий is empty unless the discussion added text beyond the four fields. If it did not, clear the comment.
-- Environment is the browser and version used for this check. If it was copied from another row, replace it with this check's browser.
+- Environment is the browser and version used for this check, then the Cursor version of this session in parentheses. If it was copied from another row, replace it. If either version cannot be read, ask and do not invent it.
 - The number is one greater than the largest number already used. The write does not replace an existing defect and does not fill a gap.
 - Version, severity, priority, and assignee are empty.
 - The reply and the row contain no login, password, token, or email address.
